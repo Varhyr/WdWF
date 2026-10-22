@@ -27,63 +27,114 @@ begin
     );
 
 
-    classic_tb1: process
+    -- classic_tb1: process
+    -- begin
+    --     FIFO_rst_n <= '0';
+    --     clk <= '0'; wait for 10 ns;
+    --     clk <= '1'; wait for 10 ns;
+    --     FIFO_rst_n <= '1';
+        
+    --     clk <= '0'; wait for 10 ns;
+    --     clk <= '1'; wait for 10 ns;
+    --     data_in <= x"01";
+    --     push <= '1';
+    --     clk <= '0'; wait for 10 ns;        
+    --     clk <= '1'; wait for 10 ns;
+    --     push <= '0';
+    --     clk <= '0'; wait for 10 ns;
+    --     clk <= '1'; wait for 10 ns;
+    --     data_in <= x"02";
+    --     push <= '1';
+    --     clk <= '0'; wait for 10 ns;
+    --     clk <= '1'; wait for 10 ns;
+    --     push <= '0';
+    --     clk <= '0'; wait for 10 ns;
+    --     clk <= '1'; wait for 10 ns;
+    --     clk <= '0'; wait for 10 ns;
+    --     clk <= '1'; wait for 10 ns;
+    --     data_in <= x"03";
+    --     push <= '1';
+    --     clk <= '0'; wait for 10 ns;
+    --     clk <= '1'; wait for 10 ns;
+    --     push <= '0';
+    --     clk <= '0'; wait for 10 ns;
+    --     clk <= '1'; wait for 10 ns;
+    --     pop <= '1';
+    --     clk <= '0'; wait for 10 ns;
+    --     clk <= '1'; wait for 10 ns;
+    --     pop <= '0';
+    --     clk <= '0'; wait for 10 ns;
+    --     clk <= '1'; wait for 10 ns;
+    --     pop <= '1';
+    --     clk <= '0'; wait for 10 ns;
+    --     clk <= '1'; wait for 10 ns;
+    --     pop <= '0';
+    --     clk <= '0'; wait for 10 ns;
+    --     clk <= '1'; wait for 10 ns;
+    --     pop <= '1';
+    --     clk <= '0'; wait for 10 ns;
+    --     clk <= '1'; wait for 10 ns;
+    --     pop <= '0';
+    --     clk <= '0'; wait for 10 ns;
+    --     clk <= '1'; wait for 10 ns;
+    --     clk <= '0'; wait for 10 ns;
+    --     clk <= '1'; wait for 10 ns;
+    --     clk <= '0'; wait for 10 ns;
+    --     clk <= '1'; wait for 10 ns;
+    --     clk <= '0'; wait for 10 ns;
+    --     clk <= '1'; wait for 10 ns;
+
+    --     wait;
+    -- end process;
+
+    clocking: process
+    begin
+            clk <= '0'; wait for 10 ns;
+            clk <= '1'; wait for 10 ns;
+    end process;
+
+    reset: process
     begin
         FIFO_rst_n <= '0';
-        clk <= '0'; wait for 10 ns;
-        clk <= '1'; wait for 10 ns;
+        wait for 20 ns;
         FIFO_rst_n <= '1';
-        
-        clk <= '0'; wait for 10 ns;
-        clk <= '1'; wait for 10 ns;
+        wait;
+    end process;
+
+    push_pr: process
+    begin
+        wait for 30 ns;
         data_in <= x"01";
         push <= '1';
-        clk <= '0'; wait for 10 ns;        
-        clk <= '1'; wait for 10 ns;
+        wait for 20 ns;
         push <= '0';
-        clk <= '0'; wait for 10 ns;
-        clk <= '1'; wait for 10 ns;
+        wait for 20 ns;
         data_in <= x"02";
         push <= '1';
-        clk <= '0'; wait for 10 ns;
-        clk <= '1'; wait for 10 ns;
+        wait for 20 ns;
         push <= '0';
-        clk <= '0'; wait for 10 ns;
-        clk <= '1'; wait for 10 ns;
-        clk <= '0'; wait for 10 ns;
-        clk <= '1'; wait for 10 ns;
+        wait for 20 ns;
         data_in <= x"03";
         push <= '1';
-        clk <= '0'; wait for 10 ns;
-        clk <= '1'; wait for 10 ns;
+        wait for 20 ns;
         push <= '0';
-        clk <= '0'; wait for 10 ns;
-        clk <= '1'; wait for 10 ns;
-        pop <= '1';
-        clk <= '0'; wait for 10 ns;
-        clk <= '1'; wait for 10 ns;
-        pop <= '0';
-        clk <= '0'; wait for 10 ns;
-        clk <= '1'; wait for 10 ns;
-        pop <= '1';
-        clk <= '0'; wait for 10 ns;
-        clk <= '1'; wait for 10 ns;
-        pop <= '0';
-        clk <= '0'; wait for 10 ns;
-        clk <= '1'; wait for 10 ns;
-        pop <= '1';
-        clk <= '0'; wait for 10 ns;
-        clk <= '1'; wait for 10 ns;
-        pop <= '0';
-        clk <= '0'; wait for 10 ns;
-        clk <= '1'; wait for 10 ns;
-        clk <= '0'; wait for 10 ns;
-        clk <= '1'; wait for 10 ns;
-        clk <= '0'; wait for 10 ns;
-        clk <= '1'; wait for 10 ns;
-        clk <= '0'; wait for 10 ns;
-        clk <= '1'; wait for 10 ns;
+        wait;
+    end process;
 
+    pop_pr: process
+    begin
+        wait for 150 ns;
+        pop <= '1';
+        wait for 20 ns;
+        pop <= '0';
+        wait for 20 ns;
+        pop <= '1';
+        wait for 20 ns;
+        pop <= '0';
+        wait for 20 ns;
+        pop <= '1';
+        wait for 20 ns;
+        pop <= '0';
         wait;
     end process;
 end Behavioral;
