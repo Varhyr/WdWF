@@ -24,7 +24,8 @@ module fifo #(
     wire do_pop = pop && !empty;
     wire do_push = push && (!full || do_pop);
 
-    assign data_out = storage[read_ptr];
+    // Storage is not reset; expose zero when no valid entry is present.
+    assign data_out = empty ? {FIFO_width{1'b0}} : storage[read_ptr];
 
     always @(posedge clk or negedge FIFO_rst_n) begin
         if (!FIFO_rst_n) begin

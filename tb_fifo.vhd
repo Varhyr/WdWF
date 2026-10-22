@@ -29,6 +29,11 @@ begin
 
     classic_tb1: process
     begin
+        FIFO_rst_n <= '0';
+        clk <= '0'; wait for 10 ns;
+        clk <= '1'; wait for 10 ns;
+        FIFO_rst_n <= '1';
+        
         clk <= '0'; wait for 10 ns;
         clk <= '1'; wait for 10 ns;
         data_in <= x"01";
@@ -79,5 +84,6 @@ begin
         clk <= '0'; wait for 10 ns;
         clk <= '1'; wait for 10 ns;
 
+        wait;
     end process;
 end Behavioral;
