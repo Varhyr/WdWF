@@ -3,13 +3,15 @@ module tb_fsm;
     reg clk;
     reg run;
     reg mode;
+    reg finj;
     wire [3:0] vector;
 
     fsm uut (
         .clk(clk),
         .run(run),
         .mode(mode),
-        .vector(vector)
+        .vector(vector),
+        .finj(finj)
     );
 
     initial begin
@@ -28,6 +30,17 @@ module tb_fsm;
     assert property (@(posedge clk) DUT.state == 3 |-> vector == 4'b1000);
 
     initial begin
+        finj = 0;
+        run = 0;
+        mode = 0;
+        #50;
+
+        run = 1;
+
+        #100;
+        mode = 1;
+        #100;
+        finj = 1;
         run = 0;
         mode = 0;
         #50;
