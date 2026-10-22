@@ -8,6 +8,8 @@ logic clk;
 logic a, b, c, d;
 
 
+assert property (@(posedge clk) req |-> ##3 gnt);
+
 initial clk =0;
 always #5 clk <= ~clk;
 
