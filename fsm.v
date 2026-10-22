@@ -22,4 +22,14 @@ always @(posedge clk) begin
         default: state <= st_0;
     endcase
 end
+
+always @(*) begin
+    case (state)
+        st_0: vector = 4'b0001;
+        st_1: vector = 4'b0010;
+        st_2: vector = 4'b0100;
+        st_3: vector = 4'b1000;
+        default: vector = 4'b0000;
+    endcase
+end
 endmodule
